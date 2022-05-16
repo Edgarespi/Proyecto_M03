@@ -20,8 +20,12 @@ public class Proyecto {
      */
     public static void main(String[] args) {
         File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
-        lecturaTaules(fichero);
+        //lecturaTaules(fichero);
         ListarTaules(fichero);
+        EditMesas(fichero);
+        //añadirMesa(fichero);
+        ListarTaules(fichero);
+        //lecturaTaules(fichero);
 
     }
 
@@ -34,26 +38,23 @@ public class Proyecto {
 
             lectorFichero.close();
         } catch (Exception e) {
-            System.out.println("Ocurrio un error dentro de la lectura del fichero");
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
 
     private static void ListarTaules(File fichero) {
-        int lineas = 0;
-
         try {
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
             while (lectorFichero.hasNext()) {
-                lineas++;
                 String[] linea = lectorFichero.nextLine().split(",");
                 System.out.println("=========================================");
-                System.out.println("Id Mesa: " + linea[0]);
-                System.out.println("Descripciion Mesa: " + linea[1]);
-                System.out.println("Cantidad máxima de persones: " + linea[2]);
-                System.out.println("Hay sillas de niños : " + linea[3]);
-                System.out.println("Cantidad de sillas de adultos: " + linea[4]);
-                System.out.println("Ventilador: " + linea[5]);
-                System.out.println("La mesa esta en el jardin? : " + linea[6]);
+                System.out.println("Id taula ==> " + linea[0]);
+                System.out.println("Descripciió o Ubicacion de la mesa  ==> " + linea[1]);
+                System.out.println("Cantidad máxima de persones  ==> " + linea[2]);
+                System.out.println("Tiene sillas de niños?  ==> " + linea[3]);
+                System.out.println("Cantidad de sillas para adultos  ==> " + linea[4]);
+                System.out.println("Tiene Ventilador ?  ==> " + linea[5]);
+                System.out.println("Esta ubicada en el Jardin?  ==> " + linea[6]);
                 System.out.println("");
 
             }
@@ -61,21 +62,19 @@ public class Proyecto {
             lectorFichero.close();
 
         } catch (Exception e) {
-            System.out.println("Ocurrio un error dentro de la lectura del fichero");
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
 
     private static void añadirMesa(File fichero) {
-
-        String nuevaMesa = "\n" + nuevaMesa();
-
+        String nueva_Fila = "\n" + nuevaMesa();
         try {
             FileWriter writer = new FileWriter(fichero, true);
-            writer.write(nuevaMesa);
+            writer.write(nueva_Fila);
             writer.close();
 
         } catch (Exception e) {
-            System.out.println("Ocurrio un error dentro de la lectura del fichero");
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
 
@@ -83,13 +82,13 @@ public class Proyecto {
         Scanner lector = new Scanner(System.in);
         System.out.println("Introducir Id Mesa: ");
         String id = lector.next();
-        System.out.println("Descripcion de Mesa ");
+        System.out.println("Descripcion de Mesa: ");
         String DescAula = lector.next();
         System.out.println("Introducir cantidad maxima de personas: ");
         String cantidadPersonas = lector.next();
         System.out.println("Indica si hay mesas de niños: ");
         String cadiresNen = lector.next();
-        System.out.println("Indica el numero de sillas de Asultos:");
+        System.out.println("Indica el numero de sillas de Adultos:");
         String cadiresAdult = lector.next();
         System.out.println("Indica si hay ventilador");
         String ventilador = lector.next();
@@ -97,5 +96,44 @@ public class Proyecto {
         String taulaJardi = lector.next();
         String nuevaLinea = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
         return nuevaLinea;
+    }
+
+    private static void EditMesas(File fichero) {
+        Scanner lector = new Scanner(System.in);
+        String fila_creada, fila_nueva;
+        System.out.println("Introduce que id quieres editar: ");
+        fila_creada = lector.next();
+        //Abrimos un array en el cual guardaremos la lineas del fichero taules.txt
+        ArrayList<String> filas = new ArrayList<>();
+
+        // Procedemos a abrirlo para leerlo en memoria
+        try {
+            Scanner lectorFichero = new Scanner(fichero);
+            while (lectorFichero.hasNext()) {
+                filas.add(lectorFichero.nextLine());
+            }
+
+            lectorFichero.close();
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
+        }
+
+        // Procedemos a sobreescribir el fichero taules.txt
+        try {
+            FileWriter writer = new FileWriter(fichero);
+
+            for (String fila : filas) {
+                if (fila_creada.equals(fila.substring(0, 4))) {
+                    fila_nueva = nuevaMesa();
+                    writer.write(fila_nueva + "\n");
+                } else {
+                    writer.write(fila + "\n");
+                }
+            }
+
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
+        }
     }
 }

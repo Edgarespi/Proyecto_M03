@@ -22,8 +22,9 @@ public class Proyecto {
         File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
         //lecturaTaules(fichero);
         ListarTaules(fichero);
-        EditMesas(fichero);
-        //añadirMesa(fichero);
+        EliminarClassroom(fichero);
+        //EditMesas(fichero);
+        //AñadirMesa(fichero);
         ListarTaules(fichero);
         //lecturaTaules(fichero);
 
@@ -66,7 +67,7 @@ public class Proyecto {
         }
     }
 
-    private static void añadirMesa(File fichero) {
+    private static void AñadirMesa(File fichero) {
         String nueva_Fila = "\n" + nuevaMesa();
         try {
             FileWriter writer = new FileWriter(fichero, true);
@@ -94,8 +95,8 @@ public class Proyecto {
         String ventilador = lector.next();
         System.out.println("Indica si la mesa esta en el jardin:");
         String taulaJardi = lector.next();
-        String nueva_Fila = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
-        return nueva_Fila;
+        String nuevaLinea = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
+        return nuevaLinea;
     }
 
     private static void EditMesas(File fichero) {
@@ -133,7 +134,42 @@ public class Proyecto {
 
             writer.close();
         } catch (Exception e) {
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
+        }
+    }
+    
+    private static void EliminarClassroom(File fichero) {
+        Scanner lector = new Scanner(System.in);
+        String fila_eliminada;
+        System.out.println("Introduce que id quieres eliminar: ");
+        fila_eliminada = lector.nextLine();
+
+        //Abrimos un array en el cual guardaremos la lineas del fichero taules.txt
+        ArrayList<String> filas = new ArrayList<>();
+
+        // Procedemos a abrirlo para leerlo en memoria
+        try {
+            Scanner lectorFichero = new Scanner(fichero);
+            while (lectorFichero.hasNext()) {
+                filas.add(lectorFichero.nextLine());
+            }
+            lectorFichero.close();
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
+        }
+        
+        // Procedemos a sobreescribir el fichero taules.txt y procederemos a eliminar la fila
+        try {
+            FileWriter writer = new FileWriter(fichero);
+
+            for (String fila : filas) {
+                if (!fila_eliminada.equals(fila.substring(0, 4))) {
+                    writer.write(fila + "\n");
+                }
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
         }
     }
 }

@@ -5,6 +5,10 @@
  */
 package proyecto;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+
 /**
  *
  * @author EdgarFernandoEspinoz
@@ -15,8 +19,27 @@ public class Proyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Primera prueba");
-    }
-    
-}
+        File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
 
+        try {
+            // Codificación ISO-8859-1 (ANSI) o UTF-8 dependiendo de cómo esté creado el fichero de texto
+            Scanner lectorFichero = new Scanner(fichero, "UTF-8");
+            while (lectorFichero.hasNext()) {
+                String[] linea = lectorFichero.nextLine().split(",");
+                System.out.println("Id taula: " + linea[0]);
+                System.out.println("Descripciió Taula: " + linea[1]);
+                System.out.println("Cantidad máxima de persones: " + linea[2]);
+                System.out.println("cadires de nen: " + linea[3]);
+                System.out.println("Cantidad de cadires adult: " + linea[4]);
+                System.out.println("Ventilador: " + linea[5]);
+                System.out.println("Taula Jardí: " + linea[6]);
+                System.out.println("");
+            }
+
+            lectorFichero.close();
+            //Si da error saltara el siguiente mensaje
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error al abrir/leer el fichero");
+        }
+    }
+}

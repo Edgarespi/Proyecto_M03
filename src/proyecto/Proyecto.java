@@ -47,13 +47,13 @@ public class Proyecto {
                 lineas++;
                 String[] linea = lectorFichero.nextLine().split(",");
                 System.out.println("=========================================");
-                System.out.println("Id taula: " + linea[0]);
-                System.out.println("Descripciió Taula: " + linea[1]);
+                System.out.println("Id Mesa: " + linea[0]);
+                System.out.println("Descripciion Mesa: " + linea[1]);
                 System.out.println("Cantidad máxima de persones: " + linea[2]);
-                System.out.println("cadires de nen: " + linea[3]);
-                System.out.println("Cantidad de cadires adult: " + linea[4]);
+                System.out.println("Hay sillas de niños : " + linea[3]);
+                System.out.println("Cantidad de sillas de adultos: " + linea[4]);
                 System.out.println("Ventilador: " + linea[5]);
-                System.out.println("Taula Jardí: " + linea[6]);
+                System.out.println("La mesa esta en el jardin? : " + linea[6]);
                 System.out.println("");
 
             }

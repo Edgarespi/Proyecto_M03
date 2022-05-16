@@ -26,6 +26,7 @@ public class Proyecto {
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
             while (lectorFichero.hasNext()) {
                 String[] linea = lectorFichero.nextLine().split(",");
+                System.out.println("=========================================");
                 System.out.println("Id taula: " + linea[0]);
                 System.out.println("Descripciió Taula: " + linea[1]);
                 System.out.println("Cantidad máxima de persones: " + linea[2]);
@@ -39,7 +40,7 @@ public class Proyecto {
             lectorFichero.close();
             //Si da error saltara el siguiente mensaje
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error al abrir/leer el fichero");
+            System.out.println("Ocurrio un error dentro de la lectura del fichero");
         }
     }
 
@@ -53,7 +54,7 @@ public class Proyecto {
             writer.close();
 
         } catch (Exception e) {
-            System.out.println("Ha ocurrido un error al crear/escribir en el fichero");
+            System.out.println("Ocurrio un error dentro de la lectura del fichero");
         }
     }
 

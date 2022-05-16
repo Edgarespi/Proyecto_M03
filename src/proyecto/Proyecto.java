@@ -22,7 +22,7 @@ public class Proyecto {
         File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
         //lecturaTaules(fichero);
         ListarTaules(fichero);
-        EliminarClassroom(fichero);
+        Eliminar_Fila(fichero);
         //EditMesas(fichero);
         //AñadirMesa(fichero);
         ListarTaules(fichero);
@@ -138,7 +138,7 @@ public class Proyecto {
         }
     }
     
-    private static void EliminarClassroom(File fichero) {
+    private static void Eliminar_Fila(File fichero) {
         Scanner lector = new Scanner(System.in);
         String fila_eliminada;
         System.out.println("Introduce que id quieres eliminar: ");

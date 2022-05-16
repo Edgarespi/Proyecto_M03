@@ -20,11 +20,31 @@ public class Proyecto {
      */
     public static void main(String[] args) {
         File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
+        lecturaTaules(fichero);
+        ListarTaules(fichero);
 
+    }
+
+    private static void lecturaTaules(File fichero) {
         try {
-            // Codificación ISO-8859-1 (ANSI) o UTF-8 dependiendo de cómo esté creado el fichero de texto
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
             while (lectorFichero.hasNext()) {
+                System.out.println(lectorFichero.nextLine());
+            }
+
+            lectorFichero.close();
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error dentro de la lectura del fichero");
+        }
+    }
+
+    private static void ListarTaules(File fichero) {
+        int lineas = 0;
+
+        try {
+            Scanner lectorFichero = new Scanner(fichero, "UTF-8");
+            while (lectorFichero.hasNext()) {
+                lineas++;
                 String[] linea = lectorFichero.nextLine().split(",");
                 System.out.println("=========================================");
                 System.out.println("Id taula: " + linea[0]);
@@ -35,10 +55,11 @@ public class Proyecto {
                 System.out.println("Ventilador: " + linea[5]);
                 System.out.println("Taula Jardí: " + linea[6]);
                 System.out.println("");
+
             }
 
             lectorFichero.close();
-            //Si da error saltara el siguiente mensaje
+
         } catch (Exception e) {
             System.out.println("Ocurrio un error dentro de la lectura del fichero");
         }

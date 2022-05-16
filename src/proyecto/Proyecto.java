@@ -94,8 +94,8 @@ public class Proyecto {
         String ventilador = lector.next();
         System.out.println("Indica si la mesa esta en el jardin:");
         String taulaJardi = lector.next();
-        String nuevaLinea = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
-        return nuevaLinea;
+        String nueva_Fila = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
+        return nueva_Fila;
     }
 
     private static void EditMesas(File fichero) {

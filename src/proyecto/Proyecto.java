@@ -81,19 +81,19 @@ public class Proyecto {
 
     private static String nuevaMesa() {
         Scanner lector = new Scanner(System.in);
-        System.out.println("Introdueix id aula: ");
+        System.out.println("Introducir Id Mesa: ");
         String id = lector.next();
-        System.out.println("Descripció de la taula: ");
+        System.out.println("Descripcion de Mesa ");
         String DescAula = lector.next();
-        System.out.println("Introdueix cantidad de persones: ");
+        System.out.println("Introducir cantidad maxima de personas: ");
         String cantidadPersonas = lector.next();
-        System.out.println("Indica si n'hi ha cadires de nen: ");
+        System.out.println("Indica si hay mesas de niños: ");
         String cadiresNen = lector.next();
-        System.out.println("Indica si n'hi ha cadires adult:");
+        System.out.println("Indica el numero de sillas de Asultos:");
         String cadiresAdult = lector.next();
-        System.out.println("Indica si n'hi ha veilador");
+        System.out.println("Indica si hay ventilador");
         String ventilador = lector.next();
-        System.out.println("Indica si la taula está al jardí");
+        System.out.println("Indica si la mesa esta en el jardin:");
         String taulaJardi = lector.next();
         String nuevaLinea = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
         return nuevaLinea;

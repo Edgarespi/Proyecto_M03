@@ -42,4 +42,38 @@ public class Proyecto {
             System.out.println("Ha ocurrido un error al abrir/leer el fichero");
         }
     }
+
+    private static void añadirMesa(File fichero) {
+
+        String nuevaMesa = "\n" + nuevaMesa();
+
+        try {
+            FileWriter writer = new FileWriter(fichero, true);
+            writer.write(nuevaMesa);
+            writer.close();
+
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error al crear/escribir en el fichero");
+        }
+    }
+
+    private static String nuevaMesa() {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Introdueix id aula: ");
+        String id = lector.next();
+        System.out.println("Descripció de la taula: ");
+        String DescAula = lector.next();
+        System.out.println("Introdueix cantidad de persones: ");
+        String cantidadPersonas = lector.next();
+        System.out.println("Indica si n'hi ha cadires de nen: ");
+        String cadiresNen = lector.next();
+        System.out.println("Indica si n'hi ha cadires adult:");
+        String cadiresAdult = lector.next();
+        System.out.println("Indica si n'hi ha veilador");
+        String ventilador = lector.next();
+        System.out.println("Indica si la taula está al jardí");
+        String taulaJardi = lector.next();
+        String nuevaLinea = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
+        return nuevaLinea;
+    }
 }

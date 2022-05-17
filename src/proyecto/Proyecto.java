@@ -7,6 +7,7 @@ package proyecto;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,63 +20,79 @@ public class Proyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner lector = new Scanner(System.in);
         File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
-        //lecturaTaules(fichero);
-        ListarTaules(fichero);
-        Eliminar_Fila(fichero);
-        //EditMesas(fichero);
-        //AñadirMesa(fichero);
-        ListarTaules(fichero);
-        //lecturaTaules(fichero);
-
+        camarero(fichero);
     }
 
-    private static void lecturaTaules(File fichero) {
-        try {
-            Scanner lectorFichero = new Scanner(fichero, "UTF-8");
-            while (lectorFichero.hasNext()) {
-                System.out.println(lectorFichero.nextLine());
+    private static void camarero(File fichero) {
+        Scanner lector = new Scanner(System.in);
+        boolean finalizar = false;
+        int menu;
+        do {
+            System.out.println("1.Listar mesas");
+            System.out.println("2.Añadir mesas");
+            System.out.println("3.Editar mesas");
+            System.out.println("4.Eliminar mesas");
+            System.out.println("5.salir");
+            System.out.print("Seleccione una opcion: ");
+            menu = lector.nextInt();
+            switch (menu) {
+                case 1:
+                    listarMesas(fichero);
+                    break;
+                case 2:
+                    añadirMesas(fichero);
+                    break;
+                case 3:
+                    editarMesas(fichero);
+                    break;
+                case 4:
+                    eliminarMesas(fichero);
+                    break;
+                case 5:
+                    finalizar = true;
+                    break;
+                default:
+                    System.out.println("Vuelva a escribir una opcion valida.");
             }
-
-            lectorFichero.close();
-        } catch (Exception e) {
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
-        }
+        } while (finalizar != true);
     }
 
-    private static void ListarTaules(File fichero) {
+    public static void listarMesas(File fichero) {
         try {
+            // Codificación ISO-8859-1 (ANSI) o UTF-8 dependiendo de cómo esté creado el fichero de texto
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
             while (lectorFichero.hasNext()) {
                 String[] linea = lectorFichero.nextLine().split(",");
-                System.out.println("=========================================");
-                System.out.println("Id taula ==> " + linea[0]);
-                System.out.println("Descripciió o Ubicacion de la mesa  ==> " + linea[1]);
-                System.out.println("Cantidad máxima de persones  ==> " + linea[2]);
-                System.out.println("Tiene sillas de niños?  ==> " + linea[3]);
-                System.out.println("Cantidad de sillas para adultos  ==> " + linea[4]);
-                System.out.println("Tiene Ventilador ?  ==> " + linea[5]);
-                System.out.println("Esta ubicada en el Jardin?  ==> " + linea[6]);
+                System.out.println("Id taula: " + linea[0]);
+                System.out.println("Descripciió Taula: " + linea[1]);
+                System.out.println("Cantidad máxima de persones: " + linea[2]);
+                System.out.println("cadires de nen: " + linea[3]);
+                System.out.println("Cantidad de cadires adult: " + linea[4]);
+                System.out.println("Ventilador: " + linea[5]);
+                System.out.println("Taula Jardí: " + linea[6]);
                 System.out.println("");
-
             }
 
             lectorFichero.close();
-
+            //Si da error saltara el siguiente mensaje
         } catch (Exception e) {
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
+            System.out.println("Ha ocurrido un error al abrir/leer el fichero");
         }
     }
 
-    private static void AñadirMesa(File fichero) {
-        String nueva_Fila = "\n" + nuevaMesa();
+    private static void añadirMesas(File fichero) {
+
+        String nuevaMesa = "\n" + nuevaMesa();
+
         try {
             FileWriter writer = new FileWriter(fichero, true);
-            writer.write(nueva_Fila);
+            writer.write(nuevaMesa);
             writer.close();
 
         } catch (Exception e) {
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
+            System.out.println("Ha ocurrido un error al crear/escribir en el fichero");
         }
     }
 
@@ -87,7 +104,7 @@ public class Proyecto {
         String DescAula = lector.next();
         System.out.println("Introducir cantidad maxima de personas: ");
         String cantidadPersonas = lector.next();
-        System.out.println("Indica si hay mesas de niños: ");
+        System.out.println("Indica si hay sillas para niños: ");
         String cadiresNen = lector.next();
         System.out.println("Indica el numero de sillas de Adultos:");
         String cadiresAdult = lector.next();
@@ -99,7 +116,7 @@ public class Proyecto {
         return nuevaLinea;
     }
 
-    private static void EditMesas(File fichero) {
+    private static void editarMesas(File fichero) {
         Scanner lector = new Scanner(System.in);
         String fila_creada, fila_nueva;
         System.out.println("Introduce que id quieres editar: ");
@@ -124,7 +141,7 @@ public class Proyecto {
             FileWriter writer = new FileWriter(fichero);
 
             for (String fila : filas) {
-                if (fila_creada.equals(fila.substring(0, 4))) {
+                if (fila_creada.equals(fila.substring(0, 5))) {
                     fila_nueva = nuevaMesa();
                     writer.write(fila_nueva + "\n");
                 } else {
@@ -137,8 +154,8 @@ public class Proyecto {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
         }
     }
-    
-    private static void Eliminar_Fila(File fichero) {
+
+    private static void eliminarMesas(File fichero) {
         Scanner lector = new Scanner(System.in);
         String fila_eliminada;
         System.out.println("Introduce que id quieres eliminar: ");
@@ -157,7 +174,7 @@ public class Proyecto {
         } catch (Exception e) {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
         }
-        
+
         // Procedemos a sobreescribir el fichero taules.txt y procederemos a eliminar la fila
         try {
             FileWriter writer = new FileWriter(fichero);

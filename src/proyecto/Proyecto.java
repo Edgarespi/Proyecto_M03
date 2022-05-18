@@ -101,18 +101,18 @@ public class Proyecto {
         System.out.println("Introducir Id Mesa: ");
         String id = lector.next();
         System.out.println("Descripcion de Mesa: ");
-        String DescAula = lector.next();
+        String DescMesa = lector.next();
         System.out.println("Introducir cantidad maxima de personas: ");
         String cantidadPersonas = lector.next();
         System.out.println("Indica si hay sillas para niños: ");
-        String cadiresNen = lector.next();
+        String sillasN = lector.next();
         System.out.println("Indica el numero de sillas de Adultos:");
-        String cadiresAdult = lector.next();
+        String sillasA = lector.next();
         System.out.println("Indica si hay ventilador");
         String ventilador = lector.next();
         System.out.println("Indica si la mesa esta en el jardin:");
-        String taulaJardi = lector.next();
-        String nuevaLinea = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
+        String mesaJardin = lector.next();
+        String nuevaLinea = id + "," + DescMesa + "," + cantidadPersonas + "," + sillasN + "," + sillasA + "," + ventilador + "," + mesaJardin;
         return nuevaLinea;
     }
 

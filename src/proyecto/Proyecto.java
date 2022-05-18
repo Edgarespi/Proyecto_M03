@@ -65,13 +65,13 @@ public class Proyecto {
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
             while (lectorFichero.hasNext()) {
                 String[] linea = lectorFichero.nextLine().split(",");
-                System.out.println("Id taula: " + linea[0]);
-                System.out.println("Descripciió Taula: " + linea[1]);
-                System.out.println("Cantidad máxima de persones: " + linea[2]);
-                System.out.println("cadires de nen: " + linea[3]);
-                System.out.println("Cantidad de cadires adult: " + linea[4]);
+                System.out.println("Id mesa: " + linea[0]);
+                System.out.println("Descripciión de mesa: " + linea[1]);
+                System.out.println("Cantidad máxima de personas: " + linea[2]);
+                System.out.println("Sillas de niño: " + linea[3]);
+                System.out.println("Cantidad de sillas de adulto: " + linea[4]);
                 System.out.println("Ventilador: " + linea[5]);
-                System.out.println("Taula Jardí: " + linea[6]);
+                System.out.println("Mesa de jardín: " + linea[6]);
                 System.out.println("");
             }
 

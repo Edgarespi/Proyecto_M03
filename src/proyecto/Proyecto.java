@@ -61,7 +61,6 @@ public class Proyecto {
 
     public static void listarMesas(File fichero) {
         try {
-            // Codificación ISO-8859-1 (ANSI) o UTF-8 dependiendo de cómo esté creado el fichero de texto
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
             while (lectorFichero.hasNext()) {
                 String[] linea = lectorFichero.nextLine().split(",");

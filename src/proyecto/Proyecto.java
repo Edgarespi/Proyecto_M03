@@ -21,6 +21,8 @@ public class ProyectoUF3 {
      */
     public static void main(String[] args) {
         File fichero = new File("C:/Users/alumne/Desktop/Weas proyecto/Proyecto_M03_Brandon_Edgar_Bruno/taules/taules.txt");
+        File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
+        File fichero = new File("C:/Users/alumne/Desktop/Proyecto_M03_Brandon_Edgar_Bruno/taules/taules.txt");
         camarero(fichero);
     }
     

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto;
+package proyectouf3;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,28 +12,19 @@ import java.util.Scanner;
 
 /**
  *
- * @author EdgarFernandoEspinoz
+ * @author Brandon, Bruno, Edgar
  */
-public class Proyecto {
+public class ProyectoUF3 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner lector = new Scanner(System.in);
-        File fichero = new File("C:/Users/EdgarFernandoEspinoz/Desktop/test.txt");
-        File fichero = new File("C:/Users/alumne/Desktop/Proyecto_M03_Brandon_Edgar_Bruno/taules/taules.txt");
-        /*//lecturaTaules(fichero);
-        ListarTaules(fichero);
-        //Eliminar_Fila(fichero);
-        EditMesas(fichero);
-        //AñadirMesa(fichero);
-        ListarTaules(fichero);
-        //lecturaTaules(fichero);*/
+        File fichero = new File("C:/Users/alumne/Desktop/Weas proyecto/Proyecto_M03_Brandon_Edgar_Bruno/taules/taules.txt");
         camarero(fichero);
-
     }
-     private static void camarero(File fichero) {
+    
+    private static void camarero(File fichero) {
         Scanner lector = new Scanner(System.in);
         boolean finalizar = false;
         int menu;
@@ -47,16 +38,16 @@ public class Proyecto {
             menu = lector.nextInt();
             switch (menu) {
                 case 1:
-                    ListarTaules(fichero);
+                    listarMesas(fichero);
                     break;
                 case 2:
-                    AñadirMesa(fichero);
+                    añadirMesas(fichero);
                     break;
                 case 3:
-                    EditMesas(fichero);
+                    editarMesas(fichero);
                     break;
                 case 4:
-                    Eliminar_Fila(fichero);
+                    eliminarMesas(fichero);
                     break;
                 case 5:
                     finalizar = true;
@@ -80,7 +71,7 @@ public class Proyecto {
         }
     }
 
-    private static void ListarTaules(File fichero) {
+    private static void listarMesas(File fichero) {
         try {
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
             while (lectorFichero.hasNext()) {
@@ -104,8 +95,8 @@ public class Proyecto {
         }
     }
 
-    private static void AñadirMesa(File fichero) {
-        String nueva_Fila = "\n" + nuevaMesa();
+    private static void añadirMesas(File fichero) {
+        String nueva_Fila = nuevaMesa();
         try {
             FileWriter writer = new FileWriter(fichero, true);
             writer.write(nueva_Fila);
@@ -121,22 +112,22 @@ public class Proyecto {
         System.out.println("Introducir Id Mesa: ");
         String id = lector.next();
         System.out.println("Descripcion de Mesa: ");
-        String DescAula = lector.next();
+        String DescMesa = lector.next();
         System.out.println("Introducir cantidad maxima de personas: ");
         String cantidadPersonas = lector.next();
         System.out.println("Indica si hay mesas de niños: ");
-        String cadiresNen = lector.next();
+        String sillasN = lector.next();
         System.out.println("Indica el numero de sillas de Adultos:");
-        String cadiresAdult = lector.next();
+        String sillasA = lector.next();
         System.out.println("Indica si hay ventilador");
         String ventilador = lector.next();
         System.out.println("Indica si la mesa esta en el jardin:");
-        String taulaJardi = lector.next();
-        String nuevaLinea = id + "," + DescAula + "," + cantidadPersonas + "," + cadiresNen + "," + cadiresAdult + "," + ventilador + "," + taulaJardi;
+        String mesaJardin = lector.next();
+        String nuevaLinea = id + "," + DescMesa + "," + cantidadPersonas + "," + sillasN + "," + sillasA + "," + ventilador + "," + mesaJardin;
         return nuevaLinea;
     }
 
-    private static void EditMesas(File fichero) {
+    private static void editarMesas(File fichero) {
         Scanner lector = new Scanner(System.in);
         String fila_creada, fila_nueva;
         System.out.println("Introduce que id quieres editar: ");
@@ -174,7 +165,7 @@ public class Proyecto {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
         }
     }
-    private static void Eliminar_Fila(File fichero) {
+    private static void eliminarMesas(File fichero) {
         Scanner lector = new Scanner(System.in);
         String fila_eliminada;
         System.out.println("Introduce que id quieres eliminar: ");

@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Brandon, Bruno, Edgar
  */
-public class usuarios implements Serializable {
+public class Usuario implements Serializable {
     public String rol;
     public String nombre;
     public String contraseña;

@@ -25,30 +25,18 @@ public class ProyectoUF3 {
         rol(usuarios, fichero);
     }
     
-    private static void rol(File fichero1, File fichero2) {
-        Scanner lector = new Scanner(System.in);
-        boolean finalizar = false;
-        int menu;
-        do {
-            System.out.println("1.Administrador");
-            System.out.println("2.Camarero");
-            System.out.println("3.Salir");
-            System.out.print("¿Que rol tiene? ");
-            menu = lector.nextInt();
-            switch (menu) {
-                case 1:
-                    administrador(fichero1);
-                    break;
-                case 2:
-                    camarero(fichero2);
-                    break;
-                case 3:
-                    finalizar = true;
-                    break;
-                default:
-                    System.out.println("Vuelva a escribir una opcion valida.");
-            }
-        } while (finalizar != true);
+    private static void generarUsuarioAdmin() {
+        try {
+            ObjectOutputStream fichero = new ObjectOutputStream(new FileOutputStream("fichero.dat"));
+            usuarios[0] = new Usuario();
+            usuarios[0].rol = "Administrador";
+            usuarios[0].nombre = "bbe";
+            usuarios[0].contraseña = "passwd";
+            fichero.writeObject(usuarios);
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
+        }
     }
     
     private static void camarero(File fichero) {

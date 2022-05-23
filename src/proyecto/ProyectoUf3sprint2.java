@@ -22,10 +22,10 @@ public class ProyectoUF3 {
     
     public static void main(String[] args) {
         File fichero = new File("taules.txt");
-        File usuarios = new File("users.dat");
+        usuarios = new Usuario[100];
         generarUsuarioAdmin();
     }
-    
+
     private static void generarUsuarioAdmin() {
         try {
             ObjectOutputStream fichero = new ObjectOutputStream(new FileOutputStream("fichero.dat"));
@@ -80,7 +80,7 @@ public class ProyectoUF3 {
         int menu;
         do {
             System.out.println("1.Crear Usuario");
-            System.out.println("2.Ver Usuarios");
+            System.out.println("2. Usuarios");
             System.out.println("3.Salir");
             System.out.print("Seleccione una opcion: ");
             menu = lector.nextInt();

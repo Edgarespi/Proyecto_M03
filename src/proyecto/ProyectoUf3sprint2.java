@@ -6,7 +6,9 @@
 package proyectouf3;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,13 +18,12 @@ import java.util.Scanner;
  */
 public class ProyectoUF3 {
 
-    /**
-     * @param args the command line arguments
-     */
+    static Usuario[] usuarios;
+    
     public static void main(String[] args) {
         File fichero = new File("taules.txt");
         File usuarios = new File("users.dat");
-        rol(usuarios, fichero);
+        generarUsuarioAdmin();
     }
     
     private static void generarUsuarioAdmin() {

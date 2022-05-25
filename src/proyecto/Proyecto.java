@@ -42,7 +42,7 @@ public class ProyectoUF3 {
             menu = lector.nextInt();
             switch (menu) {
                 case 1:
-                    //Lamamos las funciones creadas
+                    //Llamamos las funciones creadas
                     listarMesas(fichero);
                     break;
                 case 2:
@@ -55,17 +55,17 @@ public class ProyectoUF3 {
                     eliminarMesas(fichero);
                     break;
                 case 5:
-                    //En caso de que el usuario quiera salir colocara un 5 con lo cual se activara este booleam para salir
+                    //En caso de que el usuario quiera salir colocara un 5 con lo cual se activara este booleano para salir
                     finalizar = true;
                     break;
                 default:
-                    //En caso de que el usuario agregue un numero distinto aparezca este mensaje
+                    //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
                     System.out.println("Vuelva a escribir una opcion valida.");
             }
             //Indicamos cuando queremos que el programa se acabe
         } while (finalizar != true);
     }
-        //Funcion que lee el fichero para poder colocar la informacion del fichero en memoria
+    //Funcion que lee el fichero para poder colocar la información del fichero en memoria
     private static void lecturaTaules(File fichero) {
         try {
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
@@ -75,12 +75,12 @@ public class ProyectoUF3 {
 
             lectorFichero.close();
         } catch (Exception e) {
-            //En caso de que el usuario agregue un numero distinto aparezca este mensaje
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
+            //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
+            System.out.println("Ocurrio un error dentro de la lectura del fichero : ");
         }
     }
         //Funcion de listar mesas que tiene como finalidad poder colocar la informacion de cada mesa con
-        //con su respectica descripcion
+        //con su respectica descripción
     private static void listarMesas(File fichero) {
         try {
             Scanner lectorFichero = new Scanner(fichero, "UTF-8");
@@ -110,11 +110,11 @@ public class ProyectoUF3 {
             lectorFichero.close();
 
         } catch (Exception e) {
-            //En caso de que el usuario agregue un numero distinto aparezca este mensaje
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
+            //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
+            System.out.println("Ocurrio un error dentro de la lectura del fichero : ");
         }
     }
-        //Funcion para añadir mesas
+        //Función para añadir mesas
     private static void añadirMesas(File fichero) {
         String nueva_Fila = nuevaMesa();
         try {
@@ -124,11 +124,11 @@ public class ProyectoUF3 {
             writer.close();
 
         } catch (Exception e) {
-            //En caso de que el usuario agregue un numero distinto aparezca este mensaje
+            //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
             System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
-        //Funcion para poder crear una nueva mesa
+        //Función para poder crear una nueva mesa
     private static String nuevaMesa() {
         Scanner lector = new Scanner(System.in);
         //Introducimos la nueva id de la mesa
@@ -140,21 +140,21 @@ public class ProyectoUF3 {
         //Introducimos la cantidad de personas de la mesa
         System.out.println("Introducir cantidad maxima de personas: ");
         String cantidadPersonas = lector.next();
-        //Indicamos si hay mesas de niños o no
-        System.out.println("Indica si hay mesas de niños: ");
+        //Indicamos si hay sillas para niños o no
+        System.out.println("Indica si hay sillas para niños: ");
         String sillasN = lector.next();
         //Indicamos el numero de sillas de adultos en una mesa
-        System.out.println("Indica el numero de sillas de Adultos:");
+        System.out.println("Indica el numero de sillas de Adultos: ");
         String sillasA = lector.next();
         //Indicamos si hay ventilador o no
-        System.out.println("Indica si hay ventilador");
+        System.out.println("Indica si hay ventilador: ");
         String ventilador = lector.next();
         //Verificamos si la mesa esta en el jardin o no
-        System.out.println("Indica si la mesa esta en el jardin:");
+        System.out.println("Indica si la mesa esta en el jardin: ");
         String mesaJardin = lector.next();
-        //Toda la informacion colocada anteiormente lo colocaremos dentro una variable añadiendo las comas.
+        //Toda la informacion colocada anteriormente, pasará a estar dentro una variable añadiendo las comas.
         String nuevaLinea = id + "," + DescMesa + "," + cantidadPersonas + "," + sillasN + "," + sillasA + "," + ventilador + "," + mesaJardin;
-        //Haremos que la funcion retorne todo lo que colocamos dentro.
+        //Haremos que la funcion devuelva todo lo que colocamos dentro.
         return nuevaLinea;
     }
         //Funcion para poder editar mesas
@@ -179,7 +179,7 @@ public class ProyectoUF3 {
 
             lectorFichero.close();
         } catch (Exception e) {
-            //En caso de que el usuario agregue un numero distinto aparezca este mensaje
+            //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
             System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
 
@@ -203,8 +203,8 @@ public class ProyectoUF3 {
 
             writer.close();
         } catch (Exception e) {
-            //En caso de que el usuario agregue un numero distinto aparezca este mensaje
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
+            //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :");
         }
     }
         //Funcion para eliminar mesas
@@ -228,8 +228,8 @@ public class ProyectoUF3 {
             }
             lectorFichero.close();
         } catch (Exception e) {
-            //En caso de que el usuario agregue un numero distinto aparezca este mensaje
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
+            //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :");
         }
         
         // Procedemos a sobreescribir el fichero taules.txt y procederemos a eliminar la fila
@@ -244,8 +244,8 @@ public class ProyectoUF3 {
             }
             writer.close();
         } catch (Exception e) {
-            //En caso de que el usuario agregue un numero distinto aparezca este mensaje
-            System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
+            //En caso de que el usuario agregue un numero distinto se imprimirá por pantalla el siguiente mensaje
+            System.out.println("Ocurrio un error dentro de la lectura del fichero :");
         }
     }
 }

@@ -81,6 +81,33 @@ public class ProyectoUF3 {
             //Indicamos cuando queremos que el programa se acabe
         } while (finalizar != true);
     }
+    
+    private static void administrador() {
+        Scanner lector = new Scanner(System.in);
+        boolean finalizar = false;
+        int menu;
+        do {
+            System.out.println("1. Crear Usuario");
+            System.out.println("2. Usuarios");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una opcion: ");
+            menu = lector.nextInt();
+            switch (menu) {
+                case 1:
+                    añadirUsuarios();
+                    break;
+                case 2:
+                    listarUsuarios();
+                    break;
+                case 3:
+                    finalizar = true;
+                    break;
+                default:
+                    System.out.println("Vuelva a escribir una opcion valida.");
+            }
+        } while (finalizar != true);
+    }
+    
         //Funcion que lee el fichero para poder colocar la informacion del fichero en memoria
     private static void lecturaTaules(File fichero) {
         try {
@@ -130,6 +157,25 @@ public class ProyectoUF3 {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
+    
+    private static void listarUsuarios() {
+        try {
+            ObjectInputStream fichero = new ObjectInputStream(new FileInputStream("fichero.dat"));
+            Usuario[] usuarios = (Usuario[]) fichero.readObject();
+            for (Usuario usuario : usuarios) {
+                if (usuario != null) {
+                    System.out.println("Rol: " + usuario.rol);
+                    System.out.println("Usuario: " + usuario.nombre);
+                    System.out.println("Contraseña: " + usuario.contraseña);
+                    System.out.println("--------------------------");
+                }
+            }
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println("Error al abrir o leer el fichero");
+        }
+    }
+    
         //Funcion para añadir mesas
     private static void añadirMesas(File fichero) {
         String nueva_Fila = nuevaMesa();
@@ -144,6 +190,39 @@ public class ProyectoUF3 {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
+    
+    private static void añadirUsuarios() {
+        Scanner lector = new Scanner(System.in);
+        System.out.print("Rol: ");
+        String rol = lector.nextLine();
+        System.out.print("Usuario: ");
+        String nombre = lector.nextLine();
+        System.out.print("Contraseña: ");
+        String contraseña = lector.nextLine();
+        int NumUsuarios = 0;
+        boolean comprobar = true;
+        try {
+            ObjectOutputStream fichero = new ObjectOutputStream(new FileOutputStream("fichero.dat"));
+
+            while (comprobar != false) {
+                NumUsuarios++;
+                if (usuarios[NumUsuarios] == null) {
+                    usuarios[NumUsuarios] = new Usuario();
+                    usuarios[NumUsuarios].rol = rol;
+                    usuarios[NumUsuarios].nombre = nombre;
+                    usuarios[NumUsuarios].contraseña = contraseña;
+                    comprobar = false;
+                }
+
+            }
+
+            fichero.writeObject(usuarios);
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println("Error al abrir o leer el fichero");
+        }
+    }
+    
         //Funcion para poder crear una nueva mesa
     private static String nuevaMesa() {
         Scanner lector = new Scanner(System.in);

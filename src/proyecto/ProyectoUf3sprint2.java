@@ -41,7 +41,7 @@ public class ProyectoUF3 {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
         }
     }
-    //Creamos un fichero para 
+    //menu el cual nos pedirá introducir un usuario y una contraseña
     private static void sesion(File fichero) {
         Scanner lector = new Scanner(System.in);
         int cont = 0;
@@ -51,6 +51,7 @@ public class ProyectoUF3 {
             String usuario = lector.next();
             System.out.println("Introduzca su contraseña: ");
             String pass = lector.next();
+            //bucle que nos ayuda buscar y comparar los datos de usuario y contraseña.
             do {
                 for (int i = 0; i < usuarios.length; i++) {
                     if (usuario.equals(usuarios[i].nombre) && pass.equals(usuarios[i].contraseña)){
@@ -107,17 +108,20 @@ public class ProyectoUF3 {
             //Indicamos cuando queremos que el programa se acabe
         } while (finalizar != true);
     }
-    
+    //menú de administrador 
     private static void administrador() {
         Scanner lector = new Scanner(System.in);
         boolean finalizar = false;
         int menu;
+        //Haremos todo dentro de un DO WHILE con la finalidad de que el usuario pueda elegir mas opciones sin necesidad de abrir otra vez
+        //el programa, tambien ofrece la opcion de salir.
         do {
             System.out.println("1. Crear Usuario");
             System.out.println("2. Usuarios");
             System.out.println("3. Salir");
             System.out.print("Seleccione una opcion: ");
             menu = lector.nextInt();
+            //llamamos a las funciones
             switch (menu) {
                 case 1:
                     añadirUsuarios();
@@ -183,7 +187,7 @@ public class ProyectoUF3 {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
-    
+    //funcion de listar usuarios, muestra por pantalla todos los usuarios que hay en el archivo fichero.dat
     private static void listarUsuarios() {
         try {
             ObjectInputStream fichero = new ObjectInputStream(new FileInputStream("fichero.dat"));
@@ -216,7 +220,7 @@ public class ProyectoUF3 {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :( ");
         }
     }
-    
+    //función para añadir usuarios
     private static void añadirUsuarios() {
         Scanner lector = new Scanner(System.in);
         System.out.print("Rol: ");

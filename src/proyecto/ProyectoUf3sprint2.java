@@ -41,6 +41,32 @@ public class ProyectoUF3 {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
         }
     }
+    
+    private static void sesion(File fichero) {
+        Scanner lector = new Scanner(System.in);
+        int cont = 0;
+        boolean finalizar = false;
+        do {
+            System.out.println("Introduzca su usuario: ");
+            String usuario = lector.next();
+            System.out.println("Introduzca su contraseña: ");
+            String pass = lector.next();
+            do {
+                for (int i = 0; i < usuarios.length; i++) {
+                    if (usuario.equals(usuarios[i].nombre) && pass.equals(usuarios[i].contraseña)){
+                        if (usuarios[i].rol.toLowerCase().equals("administrador")) {
+                            administrador();
+                        } else if (usuarios[i].rol.toLowerCase().equals("camarero")) {
+                            camarero(fichero);
+                        }
+                    } else {
+                        System.out.println("Ha ocurrido un error de autentificación");
+                    }
+                }
+            } while (finalizar != true);
+        } while (cont != 3);
+    }
+    
     //Creacion del menu de camarero
     private static void camarero(File fichero) {
         Scanner lector = new Scanner(System.in);

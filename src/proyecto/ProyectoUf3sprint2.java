@@ -25,7 +25,7 @@ public class ProyectoUF3 {
         usuarios = new Usuario[100];
         generarUsuarioAdmin();
     }
-
+    //Funcion para poder generar un usuari automanticamente, en este caso iniciaremos como administrador
     private static void generarUsuarioAdmin() {
         try {
             ObjectOutputStream fichero = new ObjectOutputStream(new FileOutputStream("fichero.dat"));

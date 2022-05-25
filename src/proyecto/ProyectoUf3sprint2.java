@@ -41,7 +41,7 @@ public class ProyectoUF3 {
             System.out.println("Ocurrio un error dentro de la lectura del fichero :(");
         }
     }
-    
+    //Creamos un fichero para 
     private static void sesion(File fichero) {
         Scanner lector = new Scanner(System.in);
         int cont = 0;
